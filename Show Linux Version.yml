@@ -4,3 +4,7 @@
   tasks:
     - name: Read Linux version
       shell: cat /etc/os-release | grep PRETTY_NAME
+      register: linux_version_output
+
+    - debug:
+        var: linux_version_output.stdout
