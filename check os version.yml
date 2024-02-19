@@ -1,6 +1,6 @@
 ---
 - name: Get OS Version on Linux
-  hosts: RHEL_9.2
+  hosts: all
   gather_facts: yes
   tasks:
     - name: Retrieve OS Version
