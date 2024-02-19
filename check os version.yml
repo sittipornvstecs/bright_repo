@@ -1,0 +1,13 @@
+---
+- name: Get OS Version on Linux
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Retrieve OS Version
+      command: "cat /etc/os-release | grep PRETTY_NAME | cut -d'=' -f2 | tr -d '\"'"
+      register: os_version_output
+      changed_when: false  # Mark the task as unchanged
+
+    - name: Display OS Version
+      debug:
+        msg: "Operating System version is {{ os_version_output.stdout }}"
