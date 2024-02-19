@@ -4,7 +4,7 @@
   tasks:
     - name: Read Linux version
       shell: cat /etc/os-release
-      register: linux_version_output
+      register: os-release
 
     - debug:
-        var: linux_version_output.stdout
+        var: os-release.stdout
