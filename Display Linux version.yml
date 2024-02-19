@@ -5,3 +5,7 @@
   tasks:
     - name: Check Linux version
       command: uname -a
+      register: linux_version_output
+
+    - debug:
+        var: linux_version_output.stdout_lines
