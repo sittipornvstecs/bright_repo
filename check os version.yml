@@ -1,10 +1,10 @@
 ---
 - name: Get OS Version on Linux
-  hosts: all
+  hosts: RHEL_9.2
   gather_facts: yes
   tasks:
     - name: Retrieve OS Version
-      command: "cat /etc/os-release | grep PRETTY_NAME | cut -d'=' -f2 | tr -d '\"'"
+      shell: "cat /etc/os-release | grep PRETTY_NAME | cut -d'=' -f2 | tr -d '\"'"
       register: os_version_output
       changed_when: false  # Mark the task as unchanged
 
