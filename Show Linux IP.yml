@@ -4,8 +4,8 @@
   become: true
   tasks:
     - name: Retrieve network configuration
-      shell: /sbin/ifconfig || /bin/ip addr show
-      register: network_config_output
+      setup:
+      register: network_facts
 
     - debug:
-        var: network_config_output.stdout_lines
+        var: network_facts.ansible_facts.interfaces
