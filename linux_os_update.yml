@@ -1,5 +1,5 @@
 ---
-- name: Update Packages on CentOS/RHEL
+- name: Update Packages on RHEL
   hosts: all
   become: yes  # This is to escalate privileges using sudo
   tasks:
