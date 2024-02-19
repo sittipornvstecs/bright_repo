@@ -4,7 +4,7 @@
   gather_facts: yes
   tasks:
     - name: Retrieve OS Version
-      shell: cat /etc/os-release
+      shell: cat /etc/os-release | grep PRETTY_NAME | cut -d'=' -f2 | tr -d '\"'
       register: os_version_output
 
     - name: Display OS Version
