@@ -1,0 +1,11 @@
+---
+- name: Show Linux network configuration
+  hosts: all
+  become: true
+  tasks:
+    - name: Retrieve network configuration
+      shell: ip addr show
+      register: network_config_output
+
+    - debug:
+        var: network_config_output.stdout_lines
