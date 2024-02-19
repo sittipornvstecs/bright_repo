@@ -1,0 +1,7 @@
+---
+- name: Display Linux version on all hosts
+  hosts: all
+  become: true
+  tasks:
+    - name: Check Linux version
+      command: uname -a
