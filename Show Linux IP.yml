@@ -4,7 +4,7 @@
   become: true
   tasks:
     - name: Retrieve network configuration
-      shell: ifconfig
+      shell: /sbin/ifconfig || /bin/ip addr show
       register: network_config_output
 
     - debug:
