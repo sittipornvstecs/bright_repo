@@ -1,5 +1,5 @@
 ---
-- name: Display Linux version from /etc/os-release
+- name: Display Linux version
   hosts: all
   become: true
   tasks:
