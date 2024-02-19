@@ -6,7 +6,6 @@
     - name: Retrieve OS Version
       shell: "cat /etc/os-release | grep PRETTY_NAME
       register: os_version_output
-      changed_when: false  # Mark the task as unchanged
 
     - name: Display OS Version
       debug:
