@@ -1,7 +1,7 @@
 ---
 - name: Update Packages on RHEL
   hosts: all
-  become: yes  # This is to escalate privileges using sudo
+  become: yes
   tasks:
     - name: Display message before update
       debug:
