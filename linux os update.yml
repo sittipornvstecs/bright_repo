@@ -1,8 +1,7 @@
 ---
-- name: Update Packages on RHEL
-  hosts: all
-  become: yes
-  become_pass: P@ssw0rd
+- name: Update Packages on CentOS/RHEL
+  hosts: your_host_group
+  become: yes  # This is to escalate privileges using sudo
   tasks:
     - name: Display message before update
       debug:
