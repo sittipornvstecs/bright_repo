@@ -1,9 +1,9 @@
 ---
 - name: Display Linux hostname
-  hosts: all
+  hosts: your_target_group_or_host
   tasks:
     - name: Get hostname
-      command: hostname
+      shell: /bin/hostname
       register: hostname_output
 
     - name: Print hostname
