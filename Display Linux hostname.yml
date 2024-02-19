@@ -1,0 +1,11 @@
+---
+- name: Display Linux hostname
+  hosts: your_target_group_or_host
+  tasks:
+    - name: Get hostname
+      command: hostname
+      register: hostname_output
+
+    - name: Print hostname
+      debug:
+        msg: "The hostname is {{ hostname_output.stdout }}"
