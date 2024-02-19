@@ -1,6 +1,6 @@
 ---
 - name: Display Linux hostname
-  hosts: your_target_group_or_host
+  hosts: all
   tasks:
     - name: Get hostname
       shell: /bin/hostname
