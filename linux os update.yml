@@ -1,0 +1,20 @@
+---
+- name: Update Packages on CentOS/RHEL
+  hosts: all
+  become: yes  # This is to escalate privileges using sudo
+  tasks:
+    - name: Display message before update
+      debug:
+        msg: "Starting package update process..."
+
+    - name: Run yum update
+      yum:
+        name: '*'
+        state: latest
+        update_cache: yes
+      register: update_result
+
+    - name: Display message after update
+      debug:
+        msg: "Package update process completed successfully."
+      when: update_result.changed
