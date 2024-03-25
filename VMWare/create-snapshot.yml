@@ -1,9 +1,9 @@
 ---
 - name: snapshots
       community.vmware.vmware_guest_snapshot:
-        hostname: "{{vcenter}}"
-        username: "{{username}}"
-        password: "{{password}}"
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
         validate_certs: no
         datacenter: "{{ datacenter_name }}"
         folder: "/{{ datacenter_name }}/vm/"
