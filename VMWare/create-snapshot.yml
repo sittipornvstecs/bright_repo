@@ -14,7 +14,7 @@
         validate_certs: no
         datacenter: "local"
         folder: "/local/vm/"
-        name: "RHEL8"
+        name: "RHEL9"
         state: present
         snapshot_name: "Ansible-Prepatch-Snapshot"
         description: "The server is being patch and currently snapshot is holding for restoration"
