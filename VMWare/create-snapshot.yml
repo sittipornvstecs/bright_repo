@@ -1,14 +1,21 @@
 ---
-- name: snapshots
-      community.vmware.vmware_guest_snapshot:
-        hostname: "{{ vcenter_hostname }}"
-        username: "{{ vcenter_username }}"
-        password: "{{ vcenter_password }}"
-        validate_certs: no
-        datacenter: "{{ datacenter_name }}"
-        folder: "/{{ datacenter_name }}/vm/"
-        name: "{{ guest_name }}"
-        state: present
-        snapshot_name: "Ansible-Prepatch-Snapshot"
-        description: "The server is being Snapshot process"
-      delegate_to: localhost
+- hosts: localhost
+  vars:
+    vcenter: "192.168.137.250"
+    username: "administrator@vsphere.local"
+    password: "P@ssw0rd"
+  tasks:
+  
+    - name: snapshots
+              community.vmware.vmware_guest_snapshot:
+                hostname: "{{ vcenter_hostname }}"
+                username: "{{ vcenter_username }}"
+                password: "{{ vcenter_password }}"
+                validate_certs: no
+                datacenter: "{{ datacenter_name }}"
+                folder: "/{{ datacenter_name }}/vm/"
+                name: "{{ guest_name }}"
+                state: present
+                snapshot_name: "Ansible-Prepatch-Snapshot"
+                description: "The server is being Snapshot process"
+              delegate_to: localhost
