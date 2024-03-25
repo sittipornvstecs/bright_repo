@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  vars:
+    vcenter: "192.168.137.250"
+    username: "administrator@vsphere.local"
+    password: "P@ssw0rd"
+  tasks:
+
+    - name: snapshots
+      community.vmware.vmware_guest_snapshot:
+        hostname: "{{vcenter}}"
+        username: "{{username}}"
+        password: "{{password}}"
+        validate_certs: no
+        datacenter: "local"
+        folder: "/local/vm/"
+        name: "RHEL8"
+        state: revert
+        snapshot_name: "Ansible-Prepatch-Snapshot"
+        description: "The server is being patch and currently snapshot is holding for restoration"
+      delegate_to: localhost
