@@ -23,4 +23,4 @@
 
     - name: Debug message for MySQL service status
       debug:
-        msg: "MySQL service installation successfully." "
+        msg: "MySQL service installation successfully."
