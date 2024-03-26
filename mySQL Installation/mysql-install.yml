@@ -19,7 +19,7 @@
         name: mysqld
         state: started
         enabled: yes
-      register: mysql_service_result
+     # register: mysql_service_result
 
     - name: Debug message for MySQL service status
       debug:
