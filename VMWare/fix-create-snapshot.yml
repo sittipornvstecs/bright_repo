@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: all
  # vars:
   #  vcenter: "172.18.0.60"
    # username: "administrator@vsphere.local"
@@ -18,4 +18,4 @@
         state: present
         snapshot_name: "Ansible-Prepatch-Snapshot"
         description: "The server is being Snapshot process"
-      delegate_to: localhost
+      delegate_to: all
