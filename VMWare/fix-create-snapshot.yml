@@ -1,21 +1,23 @@
 ---
-hosts: all
+#hosts: all
  # vars:
   #  vcenter: "172.18.0.60"
    # username: "administrator@vsphere.local"
     #password: "xP@ssw0rd@123"
-  tasks:
+  #tasks:
   
     - name: snapshots
-      community.vmware.vmware_guest_snapshot:
-        hostname: "172.18.0.60"
-        username: "administrator@vsphere.local"
-        password: "xP@ssw0rd@123"
-        validate_certs: no
-        datacenter: "Datacenter"
-        folder: "/Datacenter/vm/"
-        name: "RHEL9"
-        state: present
-        snapshot_name: "Ansible-Prepatch-Snapshot"
-        description: "The server is being Snapshot process"
-      delegate_to: localhost
+      hosts: all
+        tasks:
+          community.vmware.vmware_guest_snapshot:
+          hostname: "172.18.0.60"
+          username: "administrator@vsphere.local"
+          password: "xP@ssw0rd@123"
+          validate_certs: no
+          datacenter: "Datacenter"
+          folder: "/Datacenter/vm/"
+          name: "RHEL9"
+          state: present
+          snapshot_name: "Ansible-Prepatch-Snapshot"
+          description: "The server is being Snapshot process"
+        delegate_to: localhost
