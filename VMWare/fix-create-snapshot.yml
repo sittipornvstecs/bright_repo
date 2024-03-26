@@ -18,4 +18,4 @@
         state: present
         snapshot_name: "Ansible-Prepatch-Snapshot"
         description: "The server is being Snapshot process"
-      delegate_to: all
+      delegate_to: localhost
