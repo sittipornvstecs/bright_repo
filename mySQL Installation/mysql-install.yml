@@ -1,6 +1,6 @@
 ---
 - name: Install MySQL on Red Hat Enterprise Linux
-  hosts: all
+  hosts: all 
   become: yes
 
   tasks:
@@ -12,7 +12,7 @@
 
     - name: Debug message for MySQL installation status
       debug:
-        msg: "MySQL installation status: {{ mysql_install_result }}"
+        msg: "MySQL installation status: {{ mysql_install_result.results }}"
 
     - name: Start MySQL service
       service:
