@@ -17,5 +17,5 @@
         name: "{{ guest_name }}"
         state: absent
         snapshot_name: "Ansible-Prepatch-Snapshot"
-        description: "The server is being Snapshot process.."
+        description: "The server is deleting Snapshot process.."
       delegate_to: localhost
