@@ -8,11 +8,11 @@
       dnf:
         name: mysql-server
         state: present
-      register: mysql_install_result
+     # register: mysql_install_result
 
     - name: Debug message for MySQL installation status
       debug:
-        msg: "MySQL installation status: {{ mysql_install_result.results }}"
+        msg: "MySQL installation on process.."
 
     - name: Start MySQL service
       service:
@@ -23,4 +23,4 @@
 
     - name: Debug message for MySQL service status
       debug:
-        msg: "MySQL service status: {{ mysql_service_result }}"
+        msg: "MySQL service installation successfully." "
