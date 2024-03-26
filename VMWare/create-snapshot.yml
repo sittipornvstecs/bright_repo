@@ -13,7 +13,7 @@
         password: "{{ vcenter_password }}"
         validate_certs: no
         datacenter: "{{ datacenter_name }}"
-      #  folder: "/{{ datacenter_name }}/vm/"
+        folder: "/{{ datacenter_name }}/vm/"
         name: "{{ guest_name }}"
         state: present
         snapshot_name: "Ansible-Prepatch-Snapshot"
