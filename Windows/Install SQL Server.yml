@@ -1,0 +1,32 @@
+---
+- hosts: windows_servers  # Target your Windows servers 
+  become: yes
+  become_user: Administrator 
+  become_method: runas
+
+  vars:
+    mssql_installer_path: 'C:\SQLServer2022\Setup.exe' 
+    mssql_instance_name: 'MSSQLSERVER'  # Default instance name
+    mssql_sa_password: 'YourStrongPassword'
+    mssql_features: 'SQLENGINE,REPLICATION,FULLTEXT,DQ'  # Customize features
+    mssql_tempdb_data_dir: 'C:\MSSQL\TempDB\Data'  
+    mssql_tempdb_log_dir: 'C:\MSSQL\TempDB\Log'  
+
+  tasks:
+    - name: Download SQL Server 2022 installer (if not present)
+      win_get_url:
+        url:  'https://download.microsoft.com/download/path/to/SQLServer2022-installer.exe'  # Replace with the actual download URL
+        dest: '{{ mssql_installer_path }}'
+        force: no  # Download only if the installer is not already present
+
+    - name: Install Microsoft SQL Server 2022
+      win_package:
+        path: '{{ mssql_installer_path }}'
+        arguments:
+          '/ConfigurationFile=C:\SQLInstall\ConfigurationFile.ini'  # Path to your configuration file
+        product_id:  'YourProductID'  # Replace with your SQL Server product ID
+
+    - name: Ensure SQL Server Service is running
+      win_service:
+        name: MSSQL$MSSQLSERVER  # Ensure correct service name if using a named instance
+        state: started
