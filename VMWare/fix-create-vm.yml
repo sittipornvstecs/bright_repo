@@ -18,7 +18,7 @@
         disk:
     - size_gb: 50
       type: thin
-      datastore: datastore1
+      datastore: "{{ vcenter_datastore }}"
       hardware:
       memory_mb: "{{ memory_mb }}"
       num_cpus: "{{ num_cpus }}"
