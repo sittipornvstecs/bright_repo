@@ -11,7 +11,7 @@
         hostname: "{{ vcenter_hostname }}"
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
-        folder: "/{{ vcenter_datacenter }}/vm"
+        folder: "/{{ datacenter_name }}/vm/"
         name: "{{ guest_name }}"
         state: poweredon
         guest_id: trhel8_64Guest
