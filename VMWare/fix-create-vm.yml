@@ -27,6 +27,8 @@
           num_cpus: "4"
           num_cpu_cores_per_socket: "4"
           scsi: paravirtual
+        cdrom:
+          
         networks:
           - name: VM Network
             dvswitch_name: "DSwitch-Simplivity"
