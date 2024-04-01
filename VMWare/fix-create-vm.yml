@@ -6,7 +6,7 @@
     #username: "administrator@vsphere.local"
     #password: "xP@ssw0rd@123"
   tasks:
-
+  
     - name: Create RHEL VM
       community.vmware.vmware_guest:
         hostname: "172.18.0.60"
@@ -26,9 +26,13 @@
           memory_mb: "4096"
           num_cpus: "4"
           num_cpu_cores_per_socket: "4"
-          scsi: paravirtual
+          scsi: paravirtual   
         cdrom:
-          
+          - controller_number: 0
+            unit_number: 0
+            state: present
+            type: iso
+            iso_path: "[SimpliVity-Datastore] ISO/rhel-baseos-9.1-x86_64-dvd.iso"
         networks:
           - name: VM Network
             dvswitch_name: "DSwitch-Simplivity"
