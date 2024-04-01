@@ -12,6 +12,7 @@
         hostname: "{{ vcenter_hostname }}"
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
+        validate_certs: no
         folder: "/{{ datacenter_name }}/vm/"
         name: "{{ guest_name }}"
         state: poweredon
