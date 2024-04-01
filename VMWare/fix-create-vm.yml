@@ -15,7 +15,7 @@
         name: "{{ vm_name }}"
         state: poweredon
         guest_id: trhel8_64Guest
-        disk: 
+        disk:
     - size_gb: 50
       type: thin
       datastore: datastore1
