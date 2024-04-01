@@ -1,5 +1,6 @@
 ---
   hosts: localhost
+  gather_facts: no
   #vars:
     #vcenter: "172.18.0.60"
     #username: "administrator@vsphere.local"
