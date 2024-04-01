@@ -1,9 +1,9 @@
 ---
 - hosts: localhost
- # vars:
-  #  vcenter: "172.18.0.60"
-   # username: "administrator@vsphere.local"
-    #password: "xP@ssw0rd@123"
+  vars:
+    vcenter: "172.18.0.60"
+    username: "administrator@vsphere.local"
+    password: "xP@ssw0rd@123"
   tasks:
 
     - name: Create RHEL VM
