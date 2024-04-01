@@ -29,7 +29,7 @@
           scsi: paravirtual
         networks:
           - name: VM Network
-            dvswitch_name: "VLAN_Veritas"
+            dvswitch_name: VLAN_Veritas
             type: dhcp
             #mac: aa:bb:dd:aa:00:14
             #ip: 10.10.10.100
