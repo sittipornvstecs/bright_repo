@@ -17,7 +17,7 @@
         folder: "/{{ datacenter_name }}/vm/"
         name: "{{ guest_name }}"
         state: poweredon
-        guest_id: trhel8_64Guest
+        guest_id: rhel8_64Guest
         disk:
         - size_gb: 50
           type: thin
