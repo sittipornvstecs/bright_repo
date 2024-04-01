@@ -29,10 +29,12 @@
           scsi: paravirtual
         networks:
           - name: VM Network
-            mac: aa:bb:dd:aa:00:14
-            ip: 10.10.10.100
-            netmask: 255.255.255.0
-            device_type: e1000e
+            dvswitch_name: "VLAN_Veritas"
+            type: dchp
+            #mac: aa:bb:dd:aa:00:14
+            #ip: 10.10.10.100
+            #netmask: 255.255.255.0
+            device_type: vmxnet3
         wait_for_ip_address: true
         wait_for_ip_address_timeout: 600
       delegate_to: localhost
