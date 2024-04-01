@@ -16,20 +16,20 @@
         state: poweredon
         guest_id: trhel8_64Guest
         disk:
-    - size_gb: 50
-      type: thin
-      datastore: "{{ vcenter_datastore }}"
-      hardware:
-      memory_mb: "{{ memory_mb }}"
-      num_cpus: "{{ num_cpus }}"
-      num_cpu_cores_per_socket: "{{ num_cpu_cores_per_socket }}"
-      scsi: paravirtual
-      networks:
-    - name: VM Network
+        - size_gb: 50
+          type: thin
+          datastore: "{{ vcenter_datastore }}"
+        hardware:
+          memory_mb: "{{ memory_mb }}"
+          num_cpus: "{{ num_cpus }}"
+          num_cpu_cores_per_socket: "{{ num_cpu_cores_per_socket }}"
+        scsi: paravirtual
+        networks:
+        - name: VM Network
       #mac: aa:bb:dd:aa:00:14
       #ip: 10.10.10.100
       #netmask: 255.255.255.0
-      device_type: vmxnet3
+          device_type: vmxnet3
     #wait_for_ip_address: true
     #wait_for_ip_address_timeout: 600
       delegate_to: localhost
