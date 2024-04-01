@@ -6,7 +6,7 @@
     #username: "administrator@vsphere.local"
     #password: "xP@ssw0rd@123"
   tasks:
-  
+
     - name: Create RHEL VM
       community.vmware.vmware_guest:
         hostname: "172.18.0.60"
@@ -46,3 +46,9 @@
         wait_for_ip_address_timeout: 600
       delegate_to: localhost
       register: deploy_vm
+
+    - name: Disable GUI Installation
+      command:
+        cmd: "echo 'inst.text' >> /tmp/anaconda-ks.cfg"
+      delegate_to: localhost
+      when: deploy_vm.changed
