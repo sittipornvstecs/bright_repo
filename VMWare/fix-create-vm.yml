@@ -48,7 +48,8 @@
       register: deploy_vm
 
     - name: Disable GUI Installation
-      command:
-        cmd: "echo 'inst.text' >> /tmp/anaconda-ks.cfg"
+      lineinfile:
+        path: /tmp/anaconda-ks.cfg
+        line: "inst.text"
       delegate_to: localhost
       when: deploy_vm.changed
