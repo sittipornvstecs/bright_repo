@@ -27,6 +27,12 @@
           num_cpus: "4"
           num_cpu_cores_per_socket: "4"
           scsi: paravirtual   
+        cdrom:
+          - controller_number: 0
+            unit_number: 0
+            state: present
+            type: iso
+            iso_path: "[SimpliVity-Datastore] ISO/rhel-baseos-9.1-x86_64-dvd.iso"
         networks:
           - name: VM Network
             dvswitch_name: "DSwitch-Simplivity"
