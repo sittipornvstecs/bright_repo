@@ -1,4 +1,5 @@
 ---
+- name: Create RHEL VM
   hosts: localhost
   gather_facts: no
   #vars:
