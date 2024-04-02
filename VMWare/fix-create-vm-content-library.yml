@@ -14,8 +14,8 @@
         password: "xP@ssw0rd@123"
         validate_certs: no
         cluster: Datacenter
-        template: rhel-9.2-x86-dvd
-        content_library: rhel-9.2-x86-dvd
+        template: "rhel-9.2-x86-dvd"
+        content_library: "rhel-9.2-x86-dvd"
         datastore: SimpliVity-Datastore
         folder: vm
         datacenter: Datacenter
