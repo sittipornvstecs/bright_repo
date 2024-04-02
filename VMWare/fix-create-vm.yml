@@ -44,9 +44,54 @@
             device_type: vmxnet3
         wait_for_ip_address: true
         wait_for_ip_address_timeout: 600
-        firstboot_command:
-          - "/bin/echo 'inst.text' >> /etc/cmdline.d/01-disable-gui-install.conf"
-          - "/usr/sbin/grubby --update-kernel=ALL --args=\"inst.text\""
+        customization:
+          hostname: vmansible
+          dns_servers:
+            - 8.8.8.8
+          timezone: UTC
+          timezone_utc: yes
+          domain: example.com
+          kickstart: |
+            #platform=x86, AMD64, or Intel EM64T
+            #version=DEVEL
+            # Install OS instead of upgrade
+            install
+            # Keyboard layouts
+            keyboard 'us'
+            # Root password
+            rootpw --iscrypted $6$.3Oog3q9GGVlImSx$saBskD8SmnXIDm3HnldLN8bssIFP4q1OQv4EqM4yKw8cn0otk96Ceqr5AMj2qCt7dz0of57pvX6JvQekIXxiK0
+            # System language
+            lang en_US.UTF-8
+            # Firewall configuration
+            firewall --disabled
+            # System authorization information
+            auth --useshadow --passalgo=sha512
+            # Use CDROM installation media
+            cdrom
+            # Use text mode install
+            text
+            # System bootloader configuration
+            bootloader --location=mbr
+            # Clear the Master Boot Record
+            zerombr
+            # Partition clearing information
+            clearpart --all --initlabel
+            # Disk partitioning information
+            part / --fstype="xfs" --grow --size=1
+            # Reboot after installation
+            reboot
+            # Network information
+            network  --bootproto=dhcp --device=ens192 --onboot=on
+            # Run the Setup Agent on first boot
+            firstboot --enable
+            # SELinux configuration
+            selinux --disabled
+            # System services
+            services --enabled="chronyd"
+            # System commands
+            %packages
+            @^minimal
+            %end
       delegate_to: localhost
       register: deploy_vm
 
