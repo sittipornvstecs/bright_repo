@@ -9,29 +9,38 @@
 
     - name: Create RHEL VM
       community.vmware.vmware_guest:
-        hostname: "{{ vcenter_hostname }}"
-        username: "{{ vcenter_username }}"
-        password: "{{ vcenter_password }}"
+        hostname: "172.18.0.60"
+        username: "administrator@vsphere.local"
+        password: "xP@ssw0rd@123"
         validate_certs: no
-        datacenter: "{{ datacenter_name }}"
-        folder: "/{{ datacenter_name }}/vm/"
-        name: "{{ guest_name }}"
+        datacenter: "Datacenter"
+        folder: "/Datacenter/vm/"
+        name: "vmansible"
         state: poweredoff
         guest_id: rhel8_64Guest
         disk:
         - size_gb: 40
           type: thin
-          datastore: "{{ vcenter_datastore }}"
+          datastore: "SimpliVity-Datastore"
         hardware:
-          memory_mb: "{{ memory_mb }}"
-          num_cpus: "{{ num_cpus }}"
-          num_cpu_cores_per_socket: "{{ num_cpu_cores_per_socket }}"
-          scsi: paravirtual
+          memory_mb: "4096"
+          num_cpus: "4"
+          num_cpu_cores_per_socket: "4"
+          scsi: paravirtual   
+        cdrom:
+          - controller_number: 0
+            unit_number: 0
+            state: present
+            type: iso
+            iso_path: "[SimpliVity-Datastore] ISO/rhel-baseos-9.1-x86_64-dvd.iso"
         networks:
           - name: VM Network
-            mac: aa:bb:dd:aa:00:14
-            ip: 10.10.10.100
-            netmask: 255.255.255.0
+            dvswitch_name: "DSwitch-Simplivity"
+            vlan: 2005
+            type: dhcp
+            #mac: aa:bb:dd:aa:00:14
+            #ip: 10.10.10.100
+            #netmask: 255.255.255.0
             device_type: vmxnet3
         wait_for_ip_address: true
         wait_for_ip_address_timeout: 600
