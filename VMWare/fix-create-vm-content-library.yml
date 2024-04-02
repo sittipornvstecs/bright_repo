@@ -12,6 +12,7 @@
         hostname: "172.18.0.60"
         username: "administrator@vsphere.local"
         password: "xP@ssw0rd@123"
+        validate_certs: no
         cluster: Datacenter
         template: Rrhel-9.2-x86-dvd
         content_library: rhel-9.2-x86-dvd
