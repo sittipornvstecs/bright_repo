@@ -18,5 +18,5 @@
         folder: vm
         datacenter: Datacenter
         name: RHELVM
-      state: poweredon
-  delegate_to: localhost
+        state: poweredon
+      delegate_to: localhost
