@@ -44,8 +44,9 @@
             device_type: vmxnet3
         wait_for_ip_address: true
         wait_for_ip_address_timeout: 600
-        extra_config:
-          guestinfo.skip: "true"
+        firstboot_command:
+          - "/bin/echo 'inst.text' >> /etc/cmdline.d/01-disable-gui-install.conf"
+          - "/usr/sbin/grubby --update-kernel=ALL --args=\"inst.text\""
       delegate_to: localhost
       register: deploy_vm
 
