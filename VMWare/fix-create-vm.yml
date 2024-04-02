@@ -44,12 +44,11 @@
             device_type: vmxnet3
         wait_for_ip_address: true
         wait_for_ip_address_timeout: 600
+        extra_config:
+          guestinfo.skip: "true"
       delegate_to: localhost
       register: deploy_vm
 
-    - name: Disable GUI Installation
-      lineinfile:
-        path: /tmp/anaconda-ks.cfg
-        line: "inst.text"
-      delegate_to: localhost
-      when: deploy_vm.changed
+    - name: Debug deploy_vm
+      debug:
+        var: deploy_vm
