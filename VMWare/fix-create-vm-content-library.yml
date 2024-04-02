@@ -7,44 +7,16 @@
     #password: "xP@ssw0rd@123"
   tasks:
 
-    - name: Create RHEL VM
-      community.vmware.vmware_guest:
-        hostname: "172.18.0.60"
-        username: "administrator@vsphere.local"
-        password: "xP@ssw0rd@123"
-        validate_certs: no
-        datacenter: "Datacenter"
-        folder: "/Datacenter/vm/"
-        name: "vmansible"
-        state: poweredoff
-        guest_id: rhel8_64Guest
-        disk:
-        - size_gb: 40
-          type: thin
-          datastore: "SimpliVity-Datastore"
-        hardware:
-          memory_mb: "4096"
-          num_cpus: "4"
-          num_cpu_cores_per_socket: "4"
-          scsi: paravirtual
-        community.vmware.vmware_content_deploy_template:
-          content_library: "rhel-9.2-x86-dvd"    
-        networks:
-          - name: VM Network
-            dvswitch_name: "DSwitch-Simplivity"
-            vlan: 2005
-            type: dhcp
-            #mac: aa:bb:dd:aa:00:14
-            #ip: 10.10.10.100
-            #netmask: 255.255.255.0
-            device_type: vmxnet3
-        wait_for_ip_address: true
-        wait_for_ip_address_timeout: 600
-      delegate_to: localhost
-      register: deploy_vm
-
-    - name: Disable GUI Installation
-      command:
-        cmd: "echo 'inst.text' >> /tmp/anaconda-ks.cfg"
-      delegate_to: localhost
-      when: deploy_vm.changed
+    - name: Deploy Virtual Machine from template in content library with PowerON State
+  community.vmware.vmware_content_deploy_template:
+    hostname: "172.18.0.60"
+    username: "administrator@vsphere.local"
+    password: "xP@ssw0rd@123"
+    template: Rrhel-9.2-x86-dvd
+    content_library: rhel-9.2-x86-dvd
+    datastore: Datacenter
+    folder: vm
+    datacenter: Datacenter
+    name: RHELVM
+    state: poweredon
+  delegate_to: localhost
