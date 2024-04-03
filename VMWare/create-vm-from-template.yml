@@ -1,0 +1,28 @@
+---
+- hosts: localhost
+  gather_facts: no
+  #vars:
+    #vcenter: "172.18.0.60"
+    #username: "administrator@vsphere.local"
+    #password: "xP@ssw0rd@123"
+  tasks:
+
+    - name: Create VM from template
+      community.vmware.vmware_guest:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        validate_certs: no
+        datacenter: "{{ datacenter_name }}"
+        folder: "{{ datacenter_name }}/vm/"
+        datastore: "{{ vcenter_datastore }}"
+        name: "{{ guest_name }}"
+        template: "{{ template_name }}"
+        state: present
+        hardware:
+          memory_mb: "{{ memory_mb }}"
+          num_cpus: "{{ num_cpus }}"
+          num_cpu_cores_per_socket: "{{ num_cpu_cores_per_socket }}"
+          scsi: paravirtual
+        wait_for_ip_address: true
+      delegate_to: localhost
