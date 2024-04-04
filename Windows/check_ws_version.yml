@@ -1,7 +1,11 @@
 ---
 - name: Check Windows Server Version
-  hosts: all
+  hosts: windows_servers
+  become: yes
+  become_user: Administrator
+  become_method: runas
   gather_facts: no
+  
   tasks:
     - name: Run systeminfo command to get OS version
       win_command: systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
