@@ -1,6 +1,6 @@
 ---
 - name: Check Windows Server Version
-  hosts: all
+  hosts: ws2022
   become: yes
   become_user: Administrator
   become_method: runas
