@@ -3,12 +3,18 @@
   become: yes
   become_user: Administrator
   become_method: runas
+  gather_facts: no
 
   tasks:
-    - name: Run systeminfo command to get OS version
-      win_command: systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+    - name: Run systeminfo command
+      win_command: systeminfo
       register: system_info_output
-      
-    - name: Display OS version
+
+    - name: Extract OS Name and OS Version
+      set_fact:
+        os_name: "{{ system_info_output.stdout | regex_search('OS Name:\\s*(.*)') }}"
+        os_version: "{{ system_info_output.stdout | regex_search('OS Version:\\s*(.*)') }}"
+
+    - name: Display OS Name and OS Version
       debug:
-        msg: "{{ system_info_output.stdout_lines }}"
+        msg: "OS Name: {{ os_name }} | OS Version: {{ os_version }}"
