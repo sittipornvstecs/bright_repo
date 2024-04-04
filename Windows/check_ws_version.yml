@@ -1,10 +1,8 @@
 ---
-- name: Check Windows Server Version
-  hosts: ws2022
+- hosts: all
   become: yes
   become_user: Administrator
   become_method: runas
-  gather_facts: no
 
   tasks:
     - name: Run systeminfo command to get OS version
