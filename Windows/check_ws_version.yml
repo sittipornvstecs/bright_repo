@@ -1,0 +1,12 @@
+---
+- name: Check Windows Server Version
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Run systeminfo command to get OS version
+      win_command: systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+      register: system_info_output
+      
+    - name: Display OS version
+      debug:
+        msg: "{{ system_info_output.stdout_lines }}"
