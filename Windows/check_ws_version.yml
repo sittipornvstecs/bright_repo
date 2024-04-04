@@ -12,8 +12,8 @@
 
     - name: Extract OS Name and OS Version
       set_fact:
-        os_name: "{{ system_info_output.stdout | regex_search('OS Name:\\s*(.*)') }}"
-        os_version: "{{ system_info_output.stdout | regex_search('OS Version:\\s*(.*)') }}"
+        os_name: "{{ system_info_output.stdout | regex_search('OS Name:\\s*(.*)') | trim }}"
+        os_version: "{{ system_info_output.stdout | regex_search('OS Version:\\s*(.*)') | trim }}"
 
     - name: Display OS Name and OS Version
       debug:
