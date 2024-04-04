@@ -3,7 +3,6 @@
   become: yes
   become_user: Administrator
   become_method: runas
-  gather_facts: no
 
   tasks:
     - name: Run systeminfo command
@@ -12,8 +11,8 @@
 
     - name: Extract OS Name and OS Version
       set_fact:
-        os_name: "{{ system_info_output.stdout | regex_search('OS Name') }}"
-        os_version: "{{ system_info_output.stdout | regex_search('OS Version') }}"
+        os_name: "{{ system_info_output.stdout | regex_search('OS Name:\\s*(.*)') }}"
+        os_version: "{{ system_info_output.stdout | regex_search('OS Version:\\s*(.*)') }}"
 
     - name: Display OS Name and OS Version
       debug:
