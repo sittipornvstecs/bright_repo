@@ -1,12 +1,4 @@
----
-- hosts: all
-  become: yes
-  become_user: Administrator
-  become_method: runas
-  gather_facts: no
-  
-  tasks:
-    - name: Install Chocolatey Windows Update Extension using Chocolatey
-      win_chocolatey:
-        name: chocolatey-windowsupdate.extension
-        state: present
+- name: Install all updates and reboot as many times as needed
+  ansible.windows.win_updates:
+    category_names: '*'
+    reboot: true
