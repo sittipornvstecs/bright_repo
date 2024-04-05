@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: all
   become: true
   become_user: Administrator
   become_method: runas
@@ -13,4 +13,4 @@
       #become_method: runas
       #become_user: Administrator
       reboot: true
-    delegate_to: localhost
+    #delegate_to: localhost
