@@ -13,5 +13,6 @@
           - SecurityUpdates
           - UpdateRollups
           - Updates
-        state: installed
+        #state: installed
         reboot: yes
+        reboot_timeout: 3600
