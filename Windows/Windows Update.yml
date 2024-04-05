@@ -8,23 +8,10 @@
   tasks:
     - name: Run Windows Update
       win_updates:
-        category_names:
+        categories:
           - CriticalUpdates
           - SecurityUpdates
           - UpdateRollups
           - Updates
         state: installed
-
-    - name: Check if reboot is required
-      win_reboot:
-        check_pending: yes
-      register: reboot_required
-
-    - name: Reboot if required
-      win_reboot:
-        reboot_timeout: 600
-      when: reboot_required.pending_reboot
-
-    - name: Ensure Windows is back online after reboot (if applicable)
-      wait_for_connection:
-        timeout: 300
+        reboot: yes
