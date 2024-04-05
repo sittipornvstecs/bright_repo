@@ -6,6 +6,7 @@
   gather_facts: no
 
   tasks:
+    ansible.windows.win_updates:
     - name: Run Windows Update
       win_updates:
       category_names: '*'
