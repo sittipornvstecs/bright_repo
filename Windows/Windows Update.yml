@@ -8,7 +8,7 @@
   tasks:
     - name: Run Windows Update
       win_updates:
-        categories:
+        category_names:
           - CriticalUpdates
           - SecurityUpdates
           - UpdateRollups
