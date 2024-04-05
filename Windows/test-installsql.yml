@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+  become_user: Administrator
+  become_method: runas
+  gather_facts: no
+  
+  tasks:
+    - name: Install SQL Server Express using Chocolatey
+      win_chocolatey:
+        name: sql-server-express
+        state: present
