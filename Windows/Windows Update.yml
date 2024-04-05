@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
-  become: true
+  become: yes
   become_user: Administrator
   become_method: runas
   gather_facts: no
@@ -9,5 +9,8 @@
   - name: Run Windows Update
     ansible.windows.win_updates:
       category_names: '*'
+      become: true
+      become_method: runas
+      become_user: SYSTEM
       reboot: true
     delegate_to: localhost
