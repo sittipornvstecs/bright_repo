@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
-  become: yes
+  become: true
   become_user: Administrator
   become_method: runas
   gather_facts: no
