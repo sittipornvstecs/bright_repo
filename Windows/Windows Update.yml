@@ -9,8 +9,8 @@
   - name: Run Windows Update
     ansible.windows.win_updates:
       category_names: '*'
-      become: true
-      become_method: runas
-      become_user: Administrator
+      #become: true
+      #become_method: runas
+      #become_user: Administrator
       reboot: true
     delegate_to: localhost
