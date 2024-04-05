@@ -1,17 +1,30 @@
 ---
-- hosts: windows_servers  # Target your Windows servers
+- hosts: all
   become: yes
   become_user: Administrator
   become_method: runas
+  gather_facts: no
 
   tasks:
-    - name: Install Windows Updates
+    - name: Run Windows Update
       win_updates:
-        categories:  # Optional - specify categories (e.g., CriticalUpdates, SecurityUpdates)
+        category_names:
+          - CriticalUpdates
           - SecurityUpdates
-        reboot: yes  # Automatically reboot if required
-        reboot_timeout: 3600  # Wait up to an hour for reboot to complete
+          - UpdateRollups
+          - Updates
+        state: installed
+
+    - name: Check if reboot is required
+      win_reboot:
+        check_pending: yes
+      register: reboot_required
+
+    - name: Reboot if required
+      win_reboot:
+        reboot_timeout: 600
+      when: reboot_required.pending_reboot
 
     - name: Ensure Windows is back online after reboot (if applicable)
       wait_for_connection:
-        timeout: 300  # Wait up to 5 minutes
+        timeout: 300
