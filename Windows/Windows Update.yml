@@ -8,7 +8,6 @@
   tasks:
   - name: Run Windows Update
     ansible.windows.win_updates:
-      win_updates:
       category_names: '*'
       reboot: true
     delegate_to: localhost
