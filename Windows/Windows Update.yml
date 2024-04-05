@@ -8,11 +8,5 @@
   tasks:
     - name: Run Windows Update
       win_updates:
-        category_names:
-          - CriticalUpdates
-          - SecurityUpdates
-          - UpdateRollups
-          - Updates
-        #state: installed
-        reboot: yes
-        reboot_timeout: 3600
+      category_names: '*'
+      reboot: true
