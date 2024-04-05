@@ -11,6 +11,6 @@
       category_names: '*'
       become: true
       become_method: runas
-      become_user: SYSTEM
+      become_user: Administrator
       reboot: true
     delegate_to: localhost
