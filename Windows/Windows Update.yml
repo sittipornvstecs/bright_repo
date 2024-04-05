@@ -6,8 +6,8 @@
   gather_facts: no
 
   tasks:
+  - name: Run Windows Update
     ansible.windows.win_updates:
-    - name: Run Windows Update
       win_updates:
       category_names: '*'
       reboot: true
