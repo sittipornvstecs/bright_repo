@@ -16,20 +16,11 @@
         state: installed
       register: win_update_result
 
-    - debug:
-        msg: "Reboot required: {{ win_update_result.reboot_required }}"
-
     - name: Reboot if updates require it
       ansible.windows.win_reboot:
       when: win_update_result.reboot_required
-
-    - debug:
-        msg: "Initiated reboot"
 
     - name: Wait for system to reboot
       ansible.windows.win_wait_for:
         state: restarted
         timeout: 300
-
-    - debug:
-        msg: "System rebooted"
