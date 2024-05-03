@@ -6,8 +6,17 @@
   gather_facts: no
 
   tasks:
-    - name: Install all updates and reboot as many times as needed
+    - name: Run Windows Update
       ansible.windows.win_updates:
         category_names: '*'
-        reboot: true
-        reboot_timeout: 180
+        state: installed
+      register: win_update_result
+
+    - name: Reboot if updates require it
+      ansible.windows.win_reboot:
+      when: win_update_result.reboot_required
+
+    - name: Wait for system to reboot
+      ansible.windows.win_wait_for:
+        state: restarted
+        timeout: 600
