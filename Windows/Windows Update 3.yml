@@ -10,8 +10,8 @@
       ansible.windows.win_updates:
         category_names:
           - CriticalUpdates
-          - SecurityUpdates
-          #- UpdateRollups
+          #- SecurityUpdates
+          - UpdateRollups
           #- Updates
         state: installed
       register: win_update_result
