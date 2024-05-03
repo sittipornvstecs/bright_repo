@@ -8,7 +8,10 @@
   tasks:
     - name: Run Windows Update
       ansible.windows.win_updates:
-        category_names: '*'
+        category_names:
+        - SecurityUpdates
+        - CriticalUpdates
+        - UpdateRollups
         state: installed
       register: win_update_result
 
