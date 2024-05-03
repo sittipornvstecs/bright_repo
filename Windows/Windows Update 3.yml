@@ -15,19 +15,14 @@
           - Updates
         state: installed
       register: win_update_result
-
-    - name: Check if a reboot is required
-      ansible.windows.win_reboot:
-      register: reboot_status
       ignore_errors: true
-      changed_when: false
 
     - name: Reboot if required
       ansible.windows.win_reboot:
-      when: reboot_status.reboot_required
+      when: win_update_result.reboot_required is defined and win_update_result.reboot_required
 
     - name: Wait for system to reboot
       ansible.windows.win_wait_for:
         state: restarted
         timeout: 300
-      when: reboot_status.reboot_required
+      when: win_update_result.reboot_required is defined and win_update_result.reboot_required
